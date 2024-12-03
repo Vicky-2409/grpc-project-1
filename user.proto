@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package userPackage;
+
+service userService {
+    rpc addUser(user) returns (user);
+    rpc getUser(userId) returns (user);
+    rpc updateUser(userId) returns (user);
+    rpc deleteUser(userId) returns (user);
+    rpc listUsers(noInput) returns (userList);
+    rpc listUsersStream(noInput) returns (stream user);
+}
+
+
+message noInput {}
+
+message user {
+    int32 id = 1;
+    string name = 2;
+    string email = 3;
+}
+
+message userId {
+    int32 id = 1;
+}
+
+message userList {
+    repeated user users = 1;
+}
